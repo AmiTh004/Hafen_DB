@@ -24,7 +24,7 @@ public class Tierart {
     public String getTierartenname() {
         return tierart_name;
     }
-    public void setTierartenname(String tierartenname) {
-        this.tierart_name = tierartenname;
+    public void setTierartenname(String tierart_name) {
+        this.tierart_name = tierart_name;
     }
 }
