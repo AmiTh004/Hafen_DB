@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 
 public class FrischwareController {
     
-    DBController dbcontroller;
+    DBController dbc;
 
     public ArrayList<Frischware> getAllFrischwaren(){
 
@@ -23,7 +23,7 @@ public class FrischwareController {
 
         // Verbindung aufbauen mit USERNAME root und PASSWORT root
         try{
-            Connection conn = DriverManager.getConnection(dbcontroller.getConnectionUrl(), dbcontroller.getUsername(), dbcontroller.getPasswort()); 
+            Connection conn = DriverManager.getConnection(dbc.getConnectionUrl(), dbc.getUsername(), dbc.getPasswort()); 
             PreparedStatement ps = conn.prepareStatement(sqlSelectAllFrischwaren); 
             ResultSet rs = ps.executeQuery();
             // Solange es Datensätze in der von der DB angefragen Ressource gibt, werden diese durchgearbeitet und dann als eine ArrayList zurückgegeben
