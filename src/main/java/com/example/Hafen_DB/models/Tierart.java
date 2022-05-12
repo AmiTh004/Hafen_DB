@@ -1,12 +1,12 @@
 package com.example.Hafen_DB.models;
 
-public class Tierarten {
+public class Tierart {
     int id;
-    String tierartenname;
+    String tierart_name;
 
-    public Tierarten(int id, String tierartenname){
+    public Tierart(int id, String tierart_name){
         setId(id);
-        setTierartenname(tierartenname);
+        setTierartenname(tierart_name);
     }
 
     /**
@@ -22,9 +22,9 @@ public class Tierarten {
         this.id = id;
     }
     public String getTierartenname() {
-        return tierartenname;
+        return tierart_name;
     }
     public void setTierartenname(String tierartenname) {
-        this.tierartenname = tierartenname;
+        this.tierart_name = tierartenname;
     }
 }

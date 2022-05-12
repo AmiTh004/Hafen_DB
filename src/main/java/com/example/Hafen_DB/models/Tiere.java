@@ -3,10 +3,10 @@ package com.example.Hafen_DB.models;
 public class Tiere {
     
     int id;
-    Tierarten tierart;
+    Tierart tierart;
     String tier_name;
 
-    public Tiere(int id, Tierarten tierart, String tier_name){
+    public Tiere(int id, Tierart tierart, String tier_name){
         setId(id);
         setTierart(tierart);
         setTier_name(tier_name);
@@ -24,10 +24,10 @@ public class Tiere {
     public int getId() {
         return id;
     }
-    public void setTierart(Tierarten tierart) {
+    public void setTierart(Tierart tierart) {
         this.tierart = tierart;
     }
-    public Tierarten getTierart() {
+    public Tierart getTierart() {
         return tierart;
     }
     public void setTier_name(String tier_name) {

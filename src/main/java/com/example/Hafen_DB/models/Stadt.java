@@ -1,10 +1,10 @@
 package com.example.Hafen_DB.models;
 
-public class Staedte {
+public class Stadt {
     int id;
     String stadt_name;
 
-    public Staedte(int id, String stadt_name){
+    public Stadt(int id, String stadt_name){
         setId(id);
         setStadt_name(stadt_name);
     }

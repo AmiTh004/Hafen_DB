@@ -3,12 +3,12 @@ package com.example.Hafen_DB.models;
 public class Route {
     
     int id;
-    Staedte ziel;
-    Staedte start;
+    Stadt ziel;
+    Stadt start;
     int entfernung;
     int fahrtdauer;
 
-    public Route(int id, Staedte ziel, Staedte start, int entfernung, int fahrtdauer){
+    public Route(int id, Stadt ziel, Stadt start, int entfernung, int fahrtdauer){
         setId(id);
         setZiel(ziel);
         setStart(start);
@@ -28,16 +28,16 @@ public class Route {
     public int getId() {
         return id;
     }
-    public void setZiel(Staedte ziel) {
+    public void setZiel(Stadt ziel) {
         this.ziel = ziel;
     }
-    public Staedte getZiel() {
+    public Stadt getZiel() {
         return ziel;
     }
-    public void setStart(Staedte start) {
+    public void setStart(Stadt start) {
         this.start = start;
     }
-    public Staedte getStart() {
+    public Stadt getStart() {
         return start;
     }
     public void setEntfernung(int entfernung) {
