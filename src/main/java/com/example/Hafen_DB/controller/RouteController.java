@@ -18,21 +18,25 @@ public class RouteController {
         // Lokale Normalwaren-Arraylist erstellen
         ArrayList<Route> route = new ArrayList<>();
     
-        // Das ist DB-Query
-        String sqlSelectAllKapitaene = "SELECT * FROM `kapitaene` JOIN person ON person.id=kapitaene.person";
+        String sqlSelectAllRoute = "SELECT * FROM `route` JOIN staedte s1 ON s1.id = route.start JOIN staedte s2 ON s2.id = route.ziel";
     
         try{
             Connection conn = DriverManager.getConnection(dbc.getConnectionUrl(), dbc.getUsername(), dbc.getPasswort()); 
-            PreparedStatement ps = conn.prepareStatement(sqlSelectAllKapitaene); 
+            PreparedStatement ps = conn.prepareStatement(sqlSelectAllRoute); 
             ResultSet rs = ps.executeQuery();
             // Solange es Datensätze in der von der DB angefragen Ressource gibt, werden diese durchgearbeitet und dann als eine ArrayList zurückgegeben
             while (rs.next()) {
+                //TEST
+                System.out.println(rs);
                 int id = (int) rs.getLong("id");
-                int personid = (int) rs.getLong("person");
-                String vorname = rs.getString( "vorname");
-                String nachname = rs.getString( "nachname");
+                int stadtid = (int) rs.getLong("stadtid");
+                //TODO STRING WIRD WAHRSCHEINLICH PROBLEME MACHEN, CAUSE MAN SOLL DAS JA EIGENTLICH AUSWÄHLEN
+                String start = rs.getString("start");
+                String ziel = rs.getString("ziel");
+                int entfernung = (int) rs.getLong("entfernung");
+                int fahrtdauer = (int) rs.getLong("fahrtdauer");
 
-                kapitaen.add(new Kapitaen(id, vorname, nachname, personid));
+                route.add(new Route(id, ziel, start, entfernung, fahrtdauer, stadtid));
             }
         }
 
@@ -40,6 +44,6 @@ public class RouteController {
             System.out.println(e);
         }
     
-        return kapitaen;
+        return route;
     }
 }
