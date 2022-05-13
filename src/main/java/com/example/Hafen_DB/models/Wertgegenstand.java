@@ -1,10 +1,10 @@
 package com.example.Hafen_DB.models;
 
-public class Wertgegenstaende {
+public class Wertgegenstand {
     int id;
     String wertgegenstaende_name;
 
-    public Wertgegenstaende(int id, String wertgegenstaende_name){
+    public Wertgegenstand(int id, String wertgegenstaende_name){
         setId(id);
         setWertgegenstaende_name(wertgegenstaende_name);
     }
