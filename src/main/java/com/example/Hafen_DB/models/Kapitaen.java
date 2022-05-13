@@ -3,11 +3,14 @@ package com.example.Hafen_DB.models;
 public class Kapitaen {
     
     int id;
-    Person person;
+    int personid;
+    String vorname;
+    String nachname;
 
-    public Kapitaen(int id, Person person){
+    public Kapitaen(int id, String vorname, String nachname, int personid){
         setId(id);
-        setPerson(person);
+        setNachname(nachname);
+        setVorname(vorname);
     }
 
     /**
@@ -15,18 +18,29 @@ public class Kapitaen {
      * 
      * SETTER UND GETTER
      */
-    
+
     public void setId(int id) {
         this.id = id;
     }
     public int getId() {
         return id;
     }
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setNachname(String nachname) {
+        this.nachname = nachname;
     }
-    public Person getPerson() {
-        return person;
+    public String getNachname() {
+        return nachname;
     }
-
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+    public String getVorname() {
+        return vorname;
+    }
+    public void setPersonid(int personid) {
+        this.personid = personid;
+    }
+    public int getPersonid() {
+        return personid;
+    }
 }

@@ -3,15 +3,19 @@ package com.example.Hafen_DB.models;
 public class Route {
     
     int id;
-    Stadt ziel;
-    Stadt start;
+
+    String ziel;
+    String start;
+    int stadtid;
+
     int entfernung;
     int fahrtdauer;
 
-    public Route(int id, Stadt ziel, Stadt start, int entfernung, int fahrtdauer){
+    public Route(int id, String ziel, String start, int entfernung, int fahrtdauer, int stadtid){
         setId(id);
-        setZiel(ziel);
+        setStadtid(stadtid);
         setStart(start);
+        setZiel(ziel);
         setEntfernung(entfernung);
         setFahrtdauer(fahrtdauer);
     }
@@ -28,17 +32,23 @@ public class Route {
     public int getId() {
         return id;
     }
-    public void setZiel(Stadt ziel) {
-        this.ziel = ziel;
+    public void setStadtid(int stadtid) {
+        this.stadtid = stadtid;
     }
-    public Stadt getZiel() {
-        return ziel;
+    public int getStadtid() {
+        return stadtid;
     }
-    public void setStart(Stadt start) {
+    public void setStart(String start) {
         this.start = start;
     }
-    public Stadt getStart() {
+    public String getStart() {
         return start;
+    }
+    public void setZiel(String ziel) {
+        this.ziel = ziel;
+    }
+    public String getZiel() {
+        return ziel;
     }
     public void setEntfernung(int entfernung) {
         this.entfernung = entfernung;
