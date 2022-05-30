@@ -18,6 +18,18 @@ public class RouteController {
         // Lokale Normalwaren-Arraylist erstellen
         ArrayList<Route> route = new ArrayList<>();
     
+        /*
+        SELECT liegt schon im Wort
+        FROM liegt schon im Wort
+        route ist die Tabelle, aus der ausgewählt wird
+        JOIN für einen Foreign Key
+        staedte ist die Tabelle, aus der der Key kommt
+        s1 ist eine Instanziierung zum Zwischenspeichern (wegen mehrerer Keys)
+        ON liegt schon im Wort
+        s1.id ist die Spalte, die gewählt werden soll
+        = route.start ist die Spalte in der Tabelle, die mit s1.id gleichgesetzt wird. 
+        danach geht es mit JOIN wieder weiter für den zweiten Key und so geht es dann weiter, wobei die Variablennamen natürlich abweichen müssen
+        */
         String sqlSelectAllRoute = "SELECT * FROM `route` JOIN staedte s1 ON s1.id = route.start JOIN staedte s2 ON s2.id = route.ziel";
     
         try{
@@ -30,7 +42,6 @@ public class RouteController {
                 System.out.println(rs);
                 int id = (int) rs.getLong("id");
                 int stadtid = (int) rs.getLong("stadtid");
-                //TODO STRING WIRD WAHRSCHEINLICH PROBLEME MACHEN, CAUSE MAN SOLL DAS JA EIGENTLICH AUSWÄHLEN
                 String start = rs.getString("start");
                 String ziel = rs.getString("ziel");
                 int entfernung = (int) rs.getLong("entfernung");
