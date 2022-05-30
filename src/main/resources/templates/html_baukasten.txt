@@ -81,3 +81,6 @@ $theme-colors: (
   </div>
 </div>
 
+
+Worth knowing:
+https://www.w3schools.com/html/html_form_elements.asp Super zum HTML lernen und austesten 
