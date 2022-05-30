@@ -11,6 +11,7 @@ public class Kapitaen {
         setId(id);
         setNachname(nachname);
         setVorname(vorname);
+        setPersonid(personid);
     }
 
     /**
