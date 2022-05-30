@@ -7,15 +7,21 @@
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <!--Inhalt der Navbar-->
+            <!--Home-->
             <li th:if="${activePage == 'home'}" class="nav-item active">
                 <a class="nav-link" th:href="@{/?activePage=home}">Home</a>
             </li>
             <li th:unless="${activePage == 'home'}" class="nav-item">
                 <a class="nav-link" th:href="@{/?activePage=home}">Home</a>
             </li>
-
+            <!--Kunde-->
+            <li th:if="${activePage == 'kunde'}" class="nav-item active">
+                <a class="nav-link" th:href="@{/?activePage=kunde}">Kunde</a>
+            </li>
+            <li th:unless="${activePage == 'kunde'}" class="nav-item">
+                <a class="nav-link" th:href="@{/?activePage=kunde}">Kunde</a>
+            </li>
            
-            
 
         </ul>
         </div>
