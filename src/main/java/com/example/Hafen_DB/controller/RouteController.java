@@ -1,5 +1,11 @@
 package com.example.Hafen_DB.controller;
 import com.example.Hafen_DB.models.Route;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import java.util.ArrayList;
     
 import java.sql.Connection;
@@ -8,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 
+@Controller
 public class RouteController {
         
     DBController dbc;
@@ -57,4 +64,30 @@ public class RouteController {
     
         return route;
     }
+
+    private ArrayList<String> getStaedte(){
+        ArrayList<String> staedte = new ArrayList<>();
+
+        staedte.add("Hamburg");
+        staedte.add("Sidney");
+        staedte.add("New York");
+        staedte.add("Bremen");
+        staedte.add("Dubai");
+        staedte.add("Rotterdam");
+
+        return staedte;
+    }
+    
+    @GetMapping("/routen")
+    public String routen(@RequestParam(name = "activePage", required = false, defaultValue = "routen") String activePage, Model model){
+        model.addAttribute("activePage", "routen");
+        model.addAttribute("routen", getAllRouten());
+        
+        //Städte laden
+        model.addAttribute("staedte", getStaedte());
+
+        return "index.html";
+    }
+
+
 }
