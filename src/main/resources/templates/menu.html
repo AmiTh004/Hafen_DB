@@ -21,8 +21,22 @@
             <li th:unless="${activePage == 'kunde'}" class="nav-item">
                 <a class="nav-link" th:href="@{/?activePage=kunde}">Kunde</a>
             </li>
-           
-
+            <!--Schiffe-->
+            <li th:if="${activePage == 'schiffe'}" class="nav-item active">
+                <a class="nav-link" th:href="@{/?activePage=schiffe}">Schiffe</a>
+            </li>
+            <li th:unless="${activePage == 'schiffe'}" class="nav-item">
+                <a class="nav-link" th:href="@{/?activePage=schiffe}">Schiffe</a>
+            </li>
+            <!--Dropdown villeicht für später
+            <li class="nav-item dropdown">
+                <select class="custom-select" id="inputGroupSelect01" th:name="kundeOptionen">
+                    <option class="nav-link" th:href="@{/?activePage=schiffe}">Schiffe</option>
+                    <option class="nav-link" th:href="@{/?activePage=kunde}">Routen</option>
+                    <option class="nav-link" th:href="@{/?activePage=kunde}">Güter</option>
+                </select>
+            </li>
+            -->
         </ul>
         </div>
     </nav>

@@ -1,0 +1,4 @@
+Hier können wir noch weitere Anmerungen eintragen
+Vorschlag zur Navbar:
+unter Kunden ein dropdown zum einsehen von Routen etc
+unter Rederei ebenfalls, dabei können die Ansichten verweis auf die gleiche Seite haben
