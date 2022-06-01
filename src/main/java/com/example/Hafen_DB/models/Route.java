@@ -3,7 +3,6 @@ package com.example.Hafen_DB.models;
 public class Route {
     
     int id;
-
     String ziel;
     String start;
     int stadtid;

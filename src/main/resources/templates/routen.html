@@ -17,8 +17,8 @@ Tabelle Route + eingabe nur Rederei
             <td th:text="${routeStat.count}"></td>
             <td th:text="${route.getStart()}"></td>
             <td th:text="${route.getZiel()}"></td>
-            <td th:text="${route.getZeitDays()}"></td>
-            <td th:text="${route.getKilometer()}"></td>
+            <td th:text="${route.getFahrtdauer()}"></td>
+            <td th:text="${route.getEntfernung()}"></td>
             <td>
                 <a class="btn btn-sm btn-danger" th:href="@{/delroute(id=${routeStat.index})}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
@@ -45,8 +45,8 @@ Tabelle Route + eingabe nur Rederei
             <!-- Dynamisierte DropDown-Liste mit Option-Select -->
             <option th:each="stadt: ${staedte}" th:value="${stadt}" th:text="${stadt}"></option>
         </select>
-        <input type="text" class="form-controll" placeholder="Fahrtzeit in Tagen" th:name="zeitDays">
-        <input type="text" class="form-controll" placeholder="Entfernung in km" th:name="kilometer">
+        <input type="text" class="form-controll" placeholder="Fahrtzeit" th:name="fahrtzeit">
+        <input type="text" class="form-controll" placeholder="Entfernung" th:name="entfernung">
         <div class="input-group-append">
             <button class="btn btn-secondary" type="submit" id="button-addon2">Speichern</button>
         </div>
