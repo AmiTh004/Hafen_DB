@@ -78,6 +78,16 @@ public class RouteController {
 
         return staedte;
     }
+
+    //Holt alle Personen aus der Datenbank
+    private ArrayList<Person> getPersonen() {
+        ArrayList<Person> personen = new ArrayList<>();
+        
+        DBController db= new DBController();
+        personen = db.getAllPersonen();
+
+        return personen;
+    }
     
     @GetMapping("/routen")
     public String routen(@RequestParam(name = "activePage", required = false, defaultValue = "routen") String activePage, Model model){
