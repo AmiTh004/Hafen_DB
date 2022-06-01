@@ -6,6 +6,8 @@ public class DBController {
     String username;
     String passwort;
 
+    RouteController rc;
+
     public DBController(){
         // ACHTUNG! Hier den Port entsprechend XAMPP austauschen, z.B. jdbc:mysql://localhost:3306/javadb
         // javadb ist der Name der Datenbank, kann auch bei euch anders sein!
@@ -13,8 +15,6 @@ public class DBController {
         setPasswort("root");
         setUsername("root");
     }
-
-
     
     /**
      * 
