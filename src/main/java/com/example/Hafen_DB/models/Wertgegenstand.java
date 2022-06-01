@@ -1,6 +1,7 @@
 package com.example.Hafen_DB.models;
 
 public class Wertgegenstand {
+    
     int id;
     String wertgegenstaende_name;
 
