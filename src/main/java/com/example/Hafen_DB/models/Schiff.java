@@ -4,9 +4,9 @@ public class Schiff {
     
     int id;
     String schiff_name;
-    Kapitaen kapitaen;
+    String kapitaen;
 
-    public Schiff(int id, String schiff_name, Kapitaen kapitaen){
+    public Schiff(int id, String schiff_name, String kapitaen){
         setId(id);
         setSchiff_name(schiff_name);
         setKapitaen(kapitaen);
@@ -30,10 +30,10 @@ public class Schiff {
     public String getSchiff_name() {
         return schiff_name;
     }
-    public void setKapitaen(Kapitaen kapitaen) {
+    public void setKapitaen(String kapitaen) {
         this.kapitaen = kapitaen;
     }
-    public Kapitaen getKapitaen() {
+    public String getKapitaen() {
         return kapitaen;
     }
 }
