@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 
-public class WertgegenstandController {
+public class DBWertgegenstandController extends DBController{
     
     public class TierartController {
     

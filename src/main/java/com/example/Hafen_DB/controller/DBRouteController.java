@@ -16,10 +16,11 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 
 @Controller
-public class RouteController {
+public class DBRouteController extends DBController {
         
     DBController dbc;
     PersonController pc;
+
     
     public ArrayList<Route> getAllRouten(){
     
@@ -55,7 +56,9 @@ public class RouteController {
                 int entfernung = (int) rs.getLong("entfernung");
                 int fahrtdauer = (int) rs.getLong("fahrtdauer");
 
-                route.add(new Route(id, ziel, start, entfernung, fahrtdauer, stadtid));
+                //route.add(new Route(id, ziel, start, entfernung, fahrtdauer, stadtid));
+                Route r1 = new Route(id, ziel, start, entfernung, fahrtdauer, stadtid);
+                System.out.println(r1);
             }
         }
 
@@ -80,6 +83,7 @@ public class RouteController {
     }
 
     //Holt alle Personen aus der Datenbank
+    /*
     private ArrayList<Person> getPersonen() {
         ArrayList<Person> personen = new ArrayList<>();
         
@@ -88,6 +92,7 @@ public class RouteController {
 
         return personen;
     }
+    */
     
     @GetMapping("/routen")
     public String routen(@RequestParam(name = "activePage", required = false, defaultValue = "routen") String activePage, Model model){
