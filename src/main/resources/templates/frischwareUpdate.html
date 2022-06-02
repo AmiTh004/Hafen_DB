@@ -1,6 +1,6 @@
 <h2>Frischware bearbeiten</h2>
 <hr>
-<form th:action="@{/updatefrischware(id=${frischwareId}">
+<form th:action="@{/updatefrischware(id=${frischwareId})}">
     <div type="input-group mb-3">
         <input type="text" class="form-control" th:value="${frischware.getFrischware_name()}" th:name="frischware_name">
         <input type="number" class="form-control" th:value="${frischwareId}" th:name="frischwareId" style="display: none;">
