@@ -1,6 +1,6 @@
 <h2>Wertgegenstaende bearbeiten</h2>
 <hr>
-<form th:action="@{/updateWertgegenstand(id=${wertgegenstandId}">
+<form th:action="@{/updateWertgegenstand(id=${wertgegenstandId})}">
     <div type="input-group mb-3">
         <input type="text" class="form-control" th:value="${wertgegenstand.getWertgegenstaende_name()}" th:name="wertgegenstand_name">
         <input type="number" class="form-control" th:value="${wertgegenstandId}" th:name="wertgegenstandId" style="display: none;">

@@ -81,9 +81,9 @@ public class DBWertgegenstandController extends DBController{
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
-                int wertgegenstaendeID = (int) rs.getLong("id");
+                int wertgegenstandID = (int) rs.getLong("id");
                 String wertgegenstaende_name = rs.getString("wertgegenstaende_name");
-                wertgegenstand = new Wertgegenstand(wertgegenstaendeID, wertgegenstaende_name);
+                wertgegenstand = new Wertgegenstand(wertgegenstandID, wertgegenstaende_name);
             }
         }
         catch(SQLException e){

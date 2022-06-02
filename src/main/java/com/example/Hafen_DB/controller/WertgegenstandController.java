@@ -56,22 +56,22 @@ public class WertgegenstandController {
         return "redirect:/wertgegenstaende";
     }
 
-    @RequestMapping("/changeWertgegenstand")
-    public String changeWertgegenstand(@RequestParam(name="id", required = true, defaultValue = "null") int id, @RequestParam(name="activePage", required = false, defaultValue = "changeWertgegenstand") String activePage, Model model){
+    @RequestMapping("/changewertgegenstand")
+    public String changewertgegenstand(@RequestParam(name="id", required = true, defaultValue = "null") int id, @RequestParam(name="activePage", required = false, defaultValue = "changewertgegenstand") String activePage, Model model){
         DBWertgegenstandController dbwc = new DBWertgegenstandController();
         model.addAttribute("wertgegenstand", dbwc.getWertgegenstand(id));
-        model.addAttribute("wertgegenstaendeID", id);
+        model.addAttribute("wertgegenstandId", id);
         
        // model.addAttribute("wertgegenstaende_name", getWertgegenstaendeName());
 
-        model.addAttribute("activePage", "wertgegenstaendeUpdate");
+        model.addAttribute("activePage", "wertgegenstandUpdate");
         return "index.html";
     }
 
-    @RequestMapping("/updateWertgegenstand")
-    public String updateWertgegenstand(@RequestParam(name="id", required = true, defaultValue = "null") int id, @RequestParam(name="wertgegenstaende_name", required = true, defaultValue = "null") String wertgegenstaende_name, @RequestParam(name="activePage", required = false, defaultValue = "updateWertgegenstand") String activePage, Model model){
+    @RequestMapping("/updatewertgegenstand")
+    public String updatewertgegenstand(@RequestParam(name="wertgegenstandId", required = true, defaultValue = "null") int wertgegenstandId, @RequestParam(name="wertgegenstaendeName", required = true, defaultValue = "null") String wertgegenstaendeName, @RequestParam(name="activePage", required = false, defaultValue = "updatewertgegenstand") String activePage, Model model){
         DBWertgegenstandController dbwc = new DBWertgegenstandController();
-        dbwc.updateWertgegenstand(id, wertgegenstaende_name);
+        dbwc.updateWertgegenstand(wertgegenstandId, wertgegenstaendeName);
         return "redirect:/wertgegenstaende";
     }
 

@@ -48,7 +48,6 @@ public class FrischwareController extends DBController{
         // Frischware zur Bearbeitung laden
         DBFrischwareController dbfc = new DBFrischwareController();
         model.addAttribute("frischware", dbfc.getFrischware(id));
-        //TODO: eventuell fehler bei frischwareid
         model.addAttribute("frischwareId", id);
 
         
