@@ -35,7 +35,12 @@
             <li th:unless="${activePage == 'routen'}" class="nav-item">
                 <a class="nav-link" th:href="@{/?activePage=routen}">Routen</a>
             </li>
-            <!--Frischwaren-->
+            
+            <!--Frischwaren
+            
+            WARUM NICHT ?activePage=  ???
+            
+            -->
             <li th:if="${activePage == 'frischwaren'}" class="nav-item active">
                 <a class="nav-link" th:href="@{/frischwaren}">Frischwaren</a>
             </li>

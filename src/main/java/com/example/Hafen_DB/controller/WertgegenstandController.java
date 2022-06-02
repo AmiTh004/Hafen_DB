@@ -4,17 +4,17 @@ import java.util.ArrayList;
 
 import com.example.Hafen_DB.models.Wertgegenstand;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+@Controller
 public class WertgegenstandController {
 
     //ArrayList-Deklaration
     ArrayList<Wertgegenstand> wertgegenstaende;
-
-    DBWertgegenstandController dbwc = new DBWertgegenstandController();
 
     public WertgegenstandController(){
         setWertgegenstand(new ArrayList<Wertgegenstand>());
@@ -23,6 +23,7 @@ public class WertgegenstandController {
 
     // Lädt aktuelle Wertgegenstaende aus der Datenbank und wirft bei Bedarf eine SQL-Exception
     private void loadWertgegenstaendeFromDB(){
+        DBWertgegenstandController dbwc = new DBWertgegenstandController();
         setWertgegenstand(dbwc.getAllWertgegenstaende());
     }
 
@@ -39,9 +40,8 @@ public class WertgegenstandController {
     @GetMapping("/wertgegenstaende")
     public String wertgegenstaende(@RequestParam(name="activePage", required = false, defaultValue = "wertgegenstaende") String activePage, Model model){
         loadWertgegenstaendeFromDB();
-        DBWertgegenstandController dbWert = new DBWertgegenstandController();
-    //model.addAttribute("activePage", "wertgegenstaende");
-        model.addAttribute("wertgegenstaende", dbWert.getAllWertgegenstaende());
+        model.addAttribute("activePage", "wertgegenstaende");
+        model.addAttribute("wertgegenstaende", getWertgegenstaende());
         
         // Standort für einen Bahnhof holen
        //model.addAttribute("wertgegenstaende_name", getWertgegenstaendeName();
@@ -51,13 +51,14 @@ public class WertgegenstandController {
 
     @RequestMapping("/delwertgegenstand")
     public String delwertgegenstand(@RequestParam(name="id", required = true, defaultValue = "null") int id, @RequestParam(name="activePage", required = false, defaultValue = "wertgegenstaende") String activePage, Model model){
+        DBWertgegenstandController dbwc = new DBWertgegenstandController();
         dbwc.delWertgegenstand(id);
         return "redirect:/wertgegenstaende";
     }
 
     @RequestMapping("/changeWertgegenstand")
     public String changeWertgegenstand(@RequestParam(name="id", required = true, defaultValue = "null") int id, @RequestParam(name="activePage", required = false, defaultValue = "changeWertgegenstand") String activePage, Model model){
-        // Bahnhof zur Bearbeitung laden
+        DBWertgegenstandController dbwc = new DBWertgegenstandController();
         model.addAttribute("wertgegenstand", dbwc.getWertgegenstand(id));
         model.addAttribute("wertgegenstaendeID", id);
         
@@ -69,12 +70,14 @@ public class WertgegenstandController {
 
     @RequestMapping("/updateWertgegenstand")
     public String updateWertgegenstand(@RequestParam(name="id", required = true, defaultValue = "null") int id, @RequestParam(name="wertgegenstaende_name", required = true, defaultValue = "null") String wertgegenstaende_name, @RequestParam(name="activePage", required = false, defaultValue = "updateWertgegenstand") String activePage, Model model){
+        DBWertgegenstandController dbwc = new DBWertgegenstandController();
         dbwc.updateWertgegenstand(id, wertgegenstaende_name);
         return "redirect:/wertgegenstaende";
     }
 
     @RequestMapping("/addWertgegenstand")
     public String addWertgegenstand(@RequestParam(name="wertgegenstaende_name", required = true, defaultValue = "null") String wertgegenstaende_name,@RequestParam(name="activePage", required = false, defaultValue = "wertgegenstaende") String activePage, Model model){
+        DBWertgegenstandController dbwc = new DBWertgegenstandController();
         dbwc.addNeWertgegenstand(wertgegenstaende_name);
         return "redirect:/wertgegenstaende";
     }
