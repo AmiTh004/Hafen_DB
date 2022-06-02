@@ -1,6 +1,9 @@
 package com.example.Hafen_DB.controller;
 
 import com.example.Hafen_DB.models.Wertgegenstand;
+
+import org.springframework.stereotype.Controller;
+
 import java.util.ArrayList;
 
 import java.sql.Connection;
@@ -9,9 +12,12 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 
+@Controller
 public class DBWertgegenstandController extends DBController{
     
-    
+    public DBWertgegenstandController(){      
+    }
+
     public ArrayList<Wertgegenstand> getAllWertgegenstaende(){
     
         ArrayList<Wertgegenstand> wertgegenstand = new ArrayList<>();
@@ -25,7 +31,7 @@ public class DBWertgegenstandController extends DBController{
             //Solange es Datensätze in der von der DB angefragen Ressource gibt, werden diese durchgearbeitet und dann als eine ArrayList zurückgegeben
             while (rs.next()) {
                 int id = (int) rs.getLong("id");
-                String wertgegenstaende_name = rs.getString("wertgegenstaende_nameeeeee");
+                String wertgegenstaende_name = rs.getString("wertgegenstaende_name");
                 wertgegenstand.add(new Wertgegenstand(id, wertgegenstaende_name));
                 }
             }

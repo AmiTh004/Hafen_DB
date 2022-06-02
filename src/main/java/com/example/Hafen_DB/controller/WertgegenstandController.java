@@ -18,7 +18,6 @@ public class WertgegenstandController {
 
     public WertgegenstandController(){
         setWertgegenstand(new ArrayList<Wertgegenstand>());
-        //createDemoData();
         loadWertgegenstaendeFromDB();
     }
 
@@ -41,7 +40,7 @@ public class WertgegenstandController {
     public String wertgegenstaende(@RequestParam(name="activePage", required = false, defaultValue = "wertgegenstaende") String activePage, Model model){
         loadWertgegenstaendeFromDB();
         DBWertgegenstandController dbWert = new DBWertgegenstandController();
-        model.addAttribute("activePage", "wertgegenstaende");
+    //model.addAttribute("activePage", "wertgegenstaende");
         model.addAttribute("wertgegenstaende", dbWert.getAllWertgegenstaende());
         
         // Standort für einen Bahnhof holen
