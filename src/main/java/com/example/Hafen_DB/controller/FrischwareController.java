@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 
-public class FrischwareController {
+public class FrischwareController extends DBController{
     
     DBController dbc;
 

@@ -35,6 +35,14 @@
             <li th:unless="${activePage == 'routen'}" class="nav-item">
                 <a class="nav-link" th:href="@{/?activePage=routen}">Routen</a>
             </li>
+            
+            <!--Wertgegenstaende-->
+            <li th:if="${activePage == 'wertgegenstaende'}" class="nav-item active">
+                <a class="nav-link" th:href="@{/?activePage=wertgegenstaende}">Wertgegenstaende</a>
+            </li>
+            <li th:unless="${activePage == 'wertgegenstaende'}" class="nav-item">
+                <a class="nav-link" th:href="@{/?activePage=wertgegenstaende}">Wertgegenstaende</a>
+            </li>
             <!--Dropdown villeicht für später
             <li class="nav-item dropdown">
                 <select class="custom-select" id="inputGroupSelect01" th:name="kundeOptionen">
