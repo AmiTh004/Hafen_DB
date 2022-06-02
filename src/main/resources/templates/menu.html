@@ -37,10 +37,10 @@
             </li>
             <!--Frischwaren-->
             <li th:if="${activePage == 'frischwaren'}" class="nav-item active">
-                <a class="nav-link" th:href="@{/?activePage=frischwaren}">Frischwaren</a>
+                <a class="nav-link" th:href="@{/frischwaren}">Frischwaren</a>
             </li>
             <li th:unless="${activePage == 'frischwaren'}" class="nav-item">
-                <a class="nav-link" th:href="@{/?activePage=frischwaren}">Frischwaren</a>
+                <a class="nav-link" th:href="@{/frischwaren}">Frischwaren</a>
             
             <!--Wertgegenstaende-->
             <li th:if="${activePage == 'wertgegenstaende'}" class="nav-item active">

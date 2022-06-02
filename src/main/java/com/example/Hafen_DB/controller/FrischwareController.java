@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.Hafen_DB.models.Frischware;
 
+@Controller
 public class FrischwareController extends DBController{
     
     ArrayList<Frischware> frischwaren;
@@ -22,6 +23,7 @@ public class FrischwareController extends DBController{
 
     //Lädt aktuelle Frischwaren aus der Datenbank und wirft bei bedarf eine SQL-Exeption aus
     private void loadFrischwarenFromDB(){
+        System.out.println("kashdkjashdkjsahdkjsahdkjasdkjsaaksakjhdskja hdskjahdkjahsdkjdsa");
         DBFrischwareController dbfc = new DBFrischwareController();
         setFrischwaren(dbfc.getAllFrischware());
     }
@@ -29,9 +31,10 @@ public class FrischwareController extends DBController{
     @GetMapping("/frischwaren")
     public String frischwaren(@RequestParam(name="activePage", required = false, defaultValue = "frischwaren") String activePage, Model model) {
         loadFrischwarenFromDB();
+        
         model.addAttribute("activePage", "frischwaren");
         model.addAttribute("frischwaren", getFrischwaren());
-
+        System.out.println("HALLO?");
         return "index.html";
     }
 
