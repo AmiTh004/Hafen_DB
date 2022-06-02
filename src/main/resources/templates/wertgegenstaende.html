@@ -11,7 +11,7 @@
     <tbody>
         <tr th:each="wertgegenstand, wertgegenstaendeStat: ${wertgegenstaende}">
             <td th:text="${wertgegenstaendeStat.count}"></td>
-            <td th:text="${wertgegenstand.getWergegenstand()}"></td>
+            <td th:text="${wertgegenstand.getWertgegenstaende_name()}"></td>
             <td>
                 <a class="btn btn-sm btn-danger" th:href="@{/delWertgegenstand(id=${wertgegenstaendeStat.index})}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
@@ -28,3 +28,11 @@
         </tr>
     </tbody>
 </table>
+<form th:action="@{/addWertgegenstand}">
+    <div class="input-group mb-3">
+        <input type="text" class="form-controll" placeholder="Name" th:name="wertgegenstandName">
+        <div class="input-group-append">
+            <button class="btn btn-secondary" type="submit" id="button-addon2">Speichern</button>
+        </div>
+    </div>
+</form>

@@ -9,11 +9,8 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 
 public class DBFrischwareController extends DBController {
-    
-
 
     public DBFrischwareController() {
-        
     }
 
     public ArrayList<Frischware> getAllFrischware(){

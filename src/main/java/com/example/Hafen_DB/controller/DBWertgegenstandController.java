@@ -58,7 +58,7 @@ public class DBWertgegenstandController extends DBController{
     public void delWertgegenstand(int id){
         try{
 
-            String sqlSelectAllWertgegenstaende = "DELETE FROM wertgegenstaende WHERE id="+String.valueOf(id);
+            String sqlSelectAllWertgegenstaende = "DELETE FROM `wertgegenstaende` WHERE id="+String.valueOf(id);
             Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort());
             PreparedStatement ps = conn.prepareStatement(sqlSelectAllWertgegenstaende); 
             // als Return von executeUpdate kommt 0 (FAIL) oder 1 (OK!) zurück
