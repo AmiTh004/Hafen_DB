@@ -23,7 +23,6 @@ public class FrischwareController extends DBController{
 
     //Lädt aktuelle Frischwaren aus der Datenbank und wirft bei bedarf eine SQL-Exeption aus
     private void loadFrischwarenFromDB(){
-        System.out.println("kashdkjashdkjsahdkjsahdkjasdkjsaaksakjhdskja hdskjahdkjahsdkjdsa");
         DBFrischwareController dbfc = new DBFrischwareController();
         setFrischwaren(dbfc.getAllFrischware());
     }
@@ -34,7 +33,6 @@ public class FrischwareController extends DBController{
         
         model.addAttribute("activePage", "frischwaren");
         model.addAttribute("frischwaren", getFrischwaren());
-        System.out.println("HALLO?");
         return "index.html";
     }
 
