@@ -48,16 +48,14 @@ public class FrischwareController extends DBController{
         // Frischware zur Bearbeitung laden
         DBFrischwareController dbfc = new DBFrischwareController();
         model.addAttribute("frischware", dbfc.getFrischware(id));
-        //TODO: eventuell fehler bei frischwareid
         model.addAttribute("frischwareId", id);
 
-        
         model.addAttribute("activePage", "frischwareUpdate");
         return "index.html";
     }
 
     @RequestMapping("/updatefrischware")
-    public String updatefrischware(@RequestParam(name="frischwareId", required = true, defaultValue = "null") int frischwareId, @RequestParam(name="frischwareName", required = true, defaultValue = "null") String frischwareName, @RequestParam(name="activePage", required = false, defaultValue = "frischwaren") String activePage, Model model){
+    public String updatefrischware(@RequestParam(name="frischwareId", required = true, defaultValue = "null") int frischwareId, @RequestParam(name="frischware_name", required = true, defaultValue = "null") String frischwareName, @RequestParam(name="activePage", required = false, defaultValue = "frischwaren") String activePage, Model model){
         DBFrischwareController dbfc = new DBFrischwareController();
         dbfc.updateFrischware(frischwareId, frischwareName);
         return "redirect:/frischwaren";

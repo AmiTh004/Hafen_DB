@@ -98,10 +98,13 @@ public class DBFrischwareController extends DBController {
     public Frischware updateFrischware(int id, String frischware_name) {
         Frischware frischware = null;
         try {
-            String sqlSelectAllPersons = "UPDATE frischware SET frischware_name='"+frischware_name+"' WHERE id="+String.valueOf(id);
+            String sqlSelectAllPersons = "UPDATE `frischware` SET frischware_name='"+frischware_name+"' WHERE id="+String.valueOf(id);
             Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort());
             PreparedStatement ps = conn.prepareStatement(sqlSelectAllPersons);
-            ps.executeUpdate();
+            //ps.executeUpdate();
+            //als Return von executeUpdate kommt 0 (fail) oder 1 (ok) zurück
+            int rs = ps.executeUpdate();
+            System.out.println(rs);
         } 
         catch (SQLException e) {
             System.out.println(e);
