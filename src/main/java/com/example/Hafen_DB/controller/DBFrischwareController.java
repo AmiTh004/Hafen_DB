@@ -60,8 +60,9 @@ public class DBFrischwareController extends DBController {
 
     //Lösche eine Frischware
     public void delFrischware(int id) {
+        System.out.println(id);
         try {
-            String sqlSelectAllPersons = "DELETE FROM frischware WHERE id="+String.valueOf(id);
+            String sqlSelectAllPersons = "DELETE FROM `frischware` WHERE id="+String.valueOf(id);
             Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort());
             PreparedStatement ps = conn.prepareStatement(sqlSelectAllPersons);
             //als Return von executeUpdate kommt 0 (fail) oder 1 (ok) zurück
