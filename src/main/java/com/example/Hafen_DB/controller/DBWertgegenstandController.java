@@ -1,9 +1,5 @@
 package com.example.Hafen_DB.controller;
-
 import com.example.Hafen_DB.models.Wertgegenstand;
-
-import org.springframework.stereotype.Controller;
-
 import java.util.ArrayList;
 
 import java.sql.Connection;
@@ -12,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 
-@Controller
 public class DBWertgegenstandController extends DBController{
     
     public DBWertgegenstandController(){      
