@@ -41,6 +41,13 @@
             </li>
             <li th:unless="${activePage == 'frischwaren'}" class="nav-item">
                 <a class="nav-link" th:href="@{/?activePage=frischwaren}">Frischwaren</a>
+            
+            <!--Wertgegenstaende-->
+            <li th:if="${activePage == 'wertgegenstaende'}" class="nav-item active">
+                <a class="nav-link" th:href="@{/?activePage=wertgegenstaende}">Wertgegenstaende</a>
+            </li>
+            <li th:unless="${activePage == 'wertgegenstaende'}" class="nav-item">
+                <a class="nav-link" th:href="@{/?activePage=wertgegenstaende}">Wertgegenstaende</a>
             </li>
             <!--Dropdown villeicht für später
             <li class="nav-item dropdown">

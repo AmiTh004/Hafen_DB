@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.Hafen_DB.models.Frischware;
 
-@Controller
-public class FrischwareController {
+public class FrischwareController extends DBController{
     
     ArrayList<Frischware> frischwaren;
 
