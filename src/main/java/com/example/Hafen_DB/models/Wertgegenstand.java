@@ -9,6 +9,7 @@ public class Wertgegenstand {
         setId(id);
         setWertgegenstaende_name(wertgegenstaende_name);
     }
+    
 
     /**
      * 
