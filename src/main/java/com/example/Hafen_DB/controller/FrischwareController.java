@@ -1,42 +1,83 @@
 package com.example.Hafen_DB.controller;
-import com.example.Hafen_DB.models.Frischware;
+
 import java.util.ArrayList;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.ResultSet;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.Hafen_DB.models.Frischware;
+
+@Controller
 public class FrischwareController {
     
-    DBController dbc;
+    ArrayList<Frischware> frischwaren;
 
-    public ArrayList<Frischware> getAllFrischware(){
+    public FrischwareController() {
+        setFrischwaren(new ArrayList<Frischware>());
 
-        // Lokale Frischwaren-Arraylist erstellen
-        ArrayList<Frischware> frischware = new ArrayList<>();
+        loadFrischwarenFromDB();
+    }
 
-        // Das ist DB-Query
-        String sqlSelectAllFrischware = "SELECT * FROM `frischware`";
+    //Lädt aktuelle Frischwaren aus der Datenbank und wirft bei bedarf eine SQL-Exeption aus
+    private void loadFrischwarenFromDB(){
+        DBFrischwareController dbfc = new DBFrischwareController();
+        setFrischwaren(dbfc.getAllFrischware());
+    }
 
-        try{
-            Connection conn = DriverManager.getConnection(dbc.getConnectionUrl(), dbc.getUsername(), dbc.getPasswort()); 
-            PreparedStatement ps = conn.prepareStatement(sqlSelectAllFrischware); 
-            ResultSet rs = ps.executeQuery();
-            // Solange es Datensätze in der von der DB angefragen Ressource gibt, werden diese durchgearbeitet und dann als eine ArrayList zurückgegeben
-            while (rs.next()) {
-                int id = (int) rs.getLong("id");
-                String frischware_name = rs.getString("frischware_name");
-                frischware.add(new Frischware(id, frischware_name));
-            }
-        }
-        catch(SQLException e){
-            System.out.println(e);
-        }
+    @GetMapping("/frischwaren")
+    public String frischwaren(@RequestParam(name="activePage", required = false, defaultValue = "frischwaren") String activePage, Model model) {
+        loadFrischwarenFromDB();
+        model.addAttribute("activePage", "frischwaren");
+        model.addAttribute("frischwaren", getFrischwaren());
 
-        return frischware;
+        return "index.html";
+    }
+
+    @RequestMapping("/delfrischware")
+    public String delfrischware(@RequestParam(name="id", required = true, defaultValue = "null")int id, @RequestParam(name="activePage", required = false, defaultValue = "frischwaren") String activePage, Model model) {
+        DBFrischwareController dbfc = new DBFrischwareController();
+        dbfc.delFrischware(id);
+        return "redirect:/frischwaren";        
+    }
+
+    @RequestMapping("/changefrischware")
+    public String changefrischware(@RequestParam(name="id", required = true, defaultValue = "null") int id, @RequestParam(name="activePage", required = false, defaultValue = "changefrischware") String activePage, Model model){
+        // Frischware zur Bearbeitung laden
+        DBFrischwareController dbfc = new DBFrischwareController();
+        model.addAttribute("frischware", dbfc.getFrischware(id));
+        //TODO: eventuell fehler bei frischwareid
+        model.addAttribute("frischwareId", id);
+
+        
+        model.addAttribute("activePage", "frischwareUpdate");
+        return "index.html";
+    }
+
+    @RequestMapping("/updatefrischware")
+    public String updatefrischware(@RequestParam(name="frischwareId", required = true, defaultValue = "null") int frischwareId, @RequestParam(name="frischwareName", required = true, defaultValue = "null") String frischwareName, @RequestParam(name="activePage", required = false, defaultValue = "frischwaren") String activePage, Model model){
+        DBFrischwareController dbfc = new DBFrischwareController();
+        dbfc.updateFrischware(frischwareId, frischwareName);
+        return "redirect:/frischwaren";
+    }
+
+    @RequestMapping("/addfrischware")
+    public String addfrischware(@RequestParam(name="frischwareName", required = true, defaultValue = "null")String frischwareName, @RequestParam(name="activePage", required = false, defaultValue = "frischwaren") String activePage, Model model){
+        DBFrischwareController dbfc = new DBFrischwareController();
+        dbfc.addNewFrischware(frischwareName);
+        return "redirect:/frischwaren";
     }
 
 
+
+
+    public void setFrischwaren(ArrayList<Frischware> frischwaren) {
+        this.frischwaren = frischwaren;
+    }
+
+    public ArrayList<Frischware> getFrischwaren() {
+        return frischwaren;
+    }
 }
