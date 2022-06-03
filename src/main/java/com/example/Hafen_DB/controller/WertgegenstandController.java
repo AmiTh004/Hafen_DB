@@ -68,7 +68,7 @@ public class WertgegenstandController {
         return "index.html";
     }
 
-    @RequestMapping("/updatewertgegenstand")
+    @RequestMapping("/updateWertgegenstand")
     public String updatewertgegenstand(@RequestParam(name="wertgegenstandId", required = true, defaultValue = "null") int wertgegenstandId, @RequestParam(name="wertgegenstaendeName", required = true, defaultValue = "null") String wertgegenstaendeName, @RequestParam(name="activePage", required = false, defaultValue = "updatewertgegenstand") String activePage, Model model){
         DBWertgegenstandController dbwc = new DBWertgegenstandController();
         dbwc.updateWertgegenstand(wertgegenstandId, wertgegenstaendeName);
