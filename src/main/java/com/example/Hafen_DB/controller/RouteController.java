@@ -18,36 +18,20 @@ import java.sql.ResultSet;
 @Controller
 public class RouteController extends DBController {
         
-    PersonController pc;
+    ArrayList<Route> routen;
 
-    
-    
+    public RouteController() {
+        setRouten(new ArrayList<Route>());
 
-    private ArrayList<String> getStaedte(){
-        ArrayList<String> staedte = new ArrayList<>();
-
-        staedte.add("Hamburg");
-        staedte.add("Sidney");
-        staedte.add("New York");
-        staedte.add("Bremen");
-        staedte.add("Dubai");
-        staedte.add("Rotterdam");
-
-        return staedte;
+        loadRoutenFromDB();
     }
 
-    //Holt alle Personen aus der Datenbank
-    /*
-    private ArrayList<Person> getPersonen() {
-        ArrayList<Person> personen = new ArrayList<>();
-        
-        DBController db= new DBController();
-        personen = db.getAllPersonen();
-
-        return personen;
+    //Lädt aktuelle Frischwaren aus der Datenbank und wirft bei bedarf eine SQL-Exeption aus
+    private void loadRoutenFromDB(){
+        DBFrischwareController dbfc = new DBFrischwareController();
+        setRouten(dbfc.getAllFrischware());
     }
-    */
-    
+
     @GetMapping("/routen")
     public String routen(@RequestParam(name = "activePage", required = false, defaultValue = "routen") String activePage, Model model){
         model.addAttribute("activePage", "routen");
@@ -89,5 +73,11 @@ public class RouteController extends DBController {
     }
 
 
+    public void setRouten(ArrayList<Route> routen) {
+        this.routen = routen;
+    }
+    public ArrayList<Route> getRouten() {
+        return routen;
+    }
 
 }
