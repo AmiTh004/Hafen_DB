@@ -4,19 +4,21 @@ public class Route {
     
     int id;
     String ziel;
+    int id_zielStadt;
     String start;
-    int stadtid;
+    int id_startStadt;
 
     int entfernung;
     int fahrtdauer;
 
-    public Route(int id, String ziel, String start, int entfernung, int fahrtdauer, int stadtid){
+    public Route(int id, String ziel, String start, int entfernung, int fahrtdauer, int id_startStadt, int id_zielStadt){
         setId(id);
-        setStadtid(stadtid);
+        setId_startStadt(id_startStadt);
         setStart(start);
         setZiel(ziel);
         setEntfernung(entfernung);
         setFahrtdauer(fahrtdauer);
+        setId_zielStadt(id_zielStadt);
     }
 
     /**
@@ -31,11 +33,11 @@ public class Route {
     public int getId() {
         return id;
     }
-    public void setStadtid(int stadtid) {
-        this.stadtid = stadtid;
+    public void setId_startStadt(int id_startStadt) {
+        this.id_startStadt = id_startStadt;
     }
-    public int getStadtid() {
-        return stadtid;
+    public int getId_startStadt() {
+        return id_startStadt;
     }
     public void setStart(String start) {
         this.start = start;
@@ -48,6 +50,12 @@ public class Route {
     }
     public String getZiel() {
         return ziel;
+    }
+    public void setId_zielStadt(int id_zielStadt) {
+        this.id_zielStadt = id_zielStadt;
+    }
+    public int getId_zielStadt() {
+        return id_zielStadt;
     }
     public void setEntfernung(int entfernung) {
         this.entfernung = entfernung;

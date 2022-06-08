@@ -39,14 +39,15 @@ public class DBRoutenController extends DBController {
                 //TEST
                 System.out.println(rs);
                 int id = (int) rs.getLong("id");
-                int stadtid = (int) rs.getLong("stadtid");
-                String start = rs.getString("start");
-                String ziel = rs.getString("ziel");
+                int id_startStadt = (int) rs.getLong("start");
+                String start = rs.getString("name");
+                int id_zielStadt = (int) rs.getLong("ziel");
+                String ziel = rs.getString("name");
                 int entfernung = (int) rs.getLong("entfernung");
                 int fahrtdauer = (int) rs.getLong("fahrtdauer");
 
                 //route.add(new Route(id, ziel, start, entfernung, fahrtdauer, stadtid));
-                Route r1 = new Route(id, ziel, start, entfernung, fahrtdauer, stadtid);
+                Route r1 = new Route(id, ziel, start, entfernung, fahrtdauer, id_startStadt, id_zielStadt);
                 System.out.println(r1);
             }
         }
@@ -57,4 +58,80 @@ public class DBRoutenController extends DBController {
     
         return route;
     }
+
+    //Füge eine neue Route hinzu
+    public void addNewRoute(int ziel, int start, int entfernung, int fahrtdauer){
+        try {
+            String sqlSelectAllPersons = "INSERT INTO route(ziel, start, entfernung, fahrtdauer) VALUES('"+ziel+"','"+start+"', '"+entfernung+"','"+fahrtdauer+"');";
+            Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort());
+            PreparedStatement ps = conn.prepareStatement(sqlSelectAllPersons);
+            //als Return von executeUpdate kommt 0 (fail) oder 1 (ok) zurück
+            int rs = ps.executeUpdate();
+            System.out.println(rs);
+        } 
+        catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    //Lösche eine Route
+    public void delRoute(int id) {
+        try {
+            String sqlSelectAllPersons = "DELETE FROM route WHERE id="+String.valueOf(id);
+            Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort());
+            PreparedStatement ps = conn.prepareStatement(sqlSelectAllPersons);
+            //als Return von executeUpdate kommt 0 (fail) oder 1 (ok) zurück
+            int rs = ps.executeUpdate();
+            System.out.println(rs);
+            
+        } 
+        catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    //Hohle spezifische Route
+    public Route getRoute(int id) {
+        Route route = null;
+        try {
+            String sqlSelectToDo = "SELECT * FROM `route` JOIN staedte s1 ON s1.id = route.start JOIN staedte s2 ON s2.id = route.ziel WHERE todos.id="+String.valueOf(id);
+            Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort());
+            PreparedStatement ps = conn.prepareStatement(sqlSelectToDo);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int routeId = (int) rs.getLong("id");
+                int id_zielStadt = (int) rs.getLong("ziel");
+                String ziel = rs.getString("name");
+                int id_startStadt = (int) rs.getLong("start");
+                String start = rs.getString("name");
+                int entfernung = (int) rs.getLong("entfernung");
+                int fahrtdauer = (int) rs.getLong("fahrtdauer");
+                route = new Route(routeId, ziel, start, entfernung, fahrtdauer, id_startStadt, id_zielStadt);
+            }
+        }
+        catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return route;
+    }
+
+    //Hohle spezifische Route und aktualisiere diese
+    public Route updateRoute(int id, String ziel, String start, int entfernung, int fahrtdauer, int id_startStadt, int id_zielStadt) {
+        Route route = null;
+        try {
+            String sqlSelectAllPersons = "UPDATE route SET ziel='"+id_zielStadt+"', start='"+id_startStadt+"', entfernung='"+entfernung+"', fahrtdauer='"+fahrtdauer+"' WHERE id="+String.valueOf(id);
+            Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort());
+            PreparedStatement ps = conn.prepareStatement(sqlSelectAllPersons);
+            ps.executeUpdate();
+        } 
+        catch (SQLException e) {
+            System.out.println(e);
+        }
+        
+        return route;
+    }
+
+    
 }

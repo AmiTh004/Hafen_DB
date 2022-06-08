@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 
-public class StadtController {
+public class DBStadtController {
     
     DBController dbc;
 
@@ -27,8 +27,8 @@ public class StadtController {
             // Solange es Datensätze in der von der DB angefragen Ressource gibt, werden diese durchgearbeitet und dann als eine ArrayList zurückgegeben
             while (rs.next()) {
                 int id = (int) rs.getLong("id");
-                String stadt_name = rs.getString("stadt_name");
-                stadt.add(new Stadt(id, stadt_name));
+                String name = rs.getString("name");
+                stadt.add(new Stadt(id, name));
             }
         }
         catch(SQLException e){
