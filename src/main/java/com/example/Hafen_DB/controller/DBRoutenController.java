@@ -118,7 +118,7 @@ public class DBRoutenController extends DBController {
     }
 
     //Hohle spezifische Route und aktualisiere diese
-    public Route updateRoute(int id, String ziel, String start, int entfernung, int fahrtdauer, int id_startStadt, int id_zielStadt) {
+    public Route updateRoute(int id, int entfernung, int fahrtdauer, int id_startStadt, int id_zielStadt) {
         Route route = null;
         try {
             String sqlSelectAllPersons = "UPDATE route SET ziel='"+id_zielStadt+"', start='"+id_startStadt+"', entfernung='"+entfernung+"', fahrtdauer='"+fahrtdauer+"' WHERE id="+String.valueOf(id);
