@@ -11,11 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
     
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.ResultSet;
 
 @Controller
 public class RouteController extends DBController {
@@ -30,24 +25,26 @@ public class RouteController extends DBController {
 
     //Lädt aktuelle Frischwaren aus der Datenbank und wirft bei bedarf eine SQL-Exeption aus
     private void loadRoutenFromDB(){
-        DBFrischwareController dbfc = new DBFrischwareController();
-        setRouten(dbfc.getAllFrischware());
+        DBRoutenController dbrc = new DBRoutenController();
+        setRouten(dbrc.getAllRouten());
     }
 
     @GetMapping("/routen")
     public String routen(@RequestParam(name = "activePage", required = false, defaultValue = "routen") String activePage, Model model){
         model.addAttribute("activePage", "routen");
-//        model.addAttribute("routen", getAllRouten());
+        model.addAttribute("routen", getRouten());
         
         //Städte laden
-        model.addAttribute("staedte", getStaedte());
+        DBStadtController dbsc = new DBStadtController();
+        model.addAttribute("staedte", dbsc.getAllStadt());
 
         return "index.html";
     }
 
     @RequestMapping("/delroute")
     public String delroute(@RequestParam(name="id", required = true, defaultValue = "null") int id, @RequestParam(name="activePage", required = false, defaultValue = "route") String activePage, Model model){
-//        getAllRouten().remove(id);
+        DBRoutenController dbrc = new DBRoutenController();
+        dbrc.delRoute(id);
         return "redirect:/routen";
     }
 
@@ -55,22 +52,22 @@ public class RouteController extends DBController {
     @RequestMapping("/changeroute")
     public String changeroute(@RequestParam(name="id", required = true, defaultValue = "null") int id, @RequestParam(name="activePage", required = false, defaultValue = "changeroute") String activePage, Model model){
         // Route zur Bearbeitung laden
-//        model.addAttribute("route", getAllRouten().get(id));
+        DBRoutenController dbrc = new DBRoutenController();
+        model.addAttribute("route", dbrc.getRoute(id));
         model.addAttribute("routeid", id);
 
         //Mögliche Städte hier hinzufügen
-        model.addAttribute("staedte", getStaedte());
+        DBStadtController dbsc = new DBStadtController();
+        model.addAttribute("staedte", dbsc.getAllStadt());
 
         model.addAttribute("activePage", "routeUpdate");
         return "index.html";
     }
     
     @RequestMapping("/updateroute")
-    public String updateroute(@RequestParam(name="routeId", required = true, defaultValue = "null") int routeId, @RequestParam(name = "routeStart", required = true, defaultValue = "null") String start, @RequestParam(name="ziel", required = true, defaultValue = "null") String ziel, @RequestParam(name="fahrtdauer", required = true, defaultValue = "null") int fahrtdauer, @RequestParam(name="entfernung", required = true, defaultValue = "null") int entfernung, @RequestParam(name="activePage", required = false, defaultValue = "routen") String activePage, Model model){
-//        getAllRouten().get(routeId).setStart(start);
-//        getAllRouten().get(routeId).setZiel(ziel);
-//        getAllRouten().get(routeId).setFahrtdauer(fahrtdauer);
-//        getAllRouten().get(routeId).setEntfernung(entfernung);
+    public String updateroute(@RequestParam(name="routeId", required = true, defaultValue = "null") int routeId, @RequestParam(name = "start", required = true, defaultValue = "null") int id_startStadt, @RequestParam(name="ziel", required = true, defaultValue = "null") int id_zielStadt, @RequestParam(name="fahrtdauer", required = true, defaultValue = "null") int fahrtdauer, @RequestParam(name="entfernung", required = true, defaultValue = "null") int entfernung, @RequestParam(name="activePage", required = false, defaultValue = "routen") String activePage, Model model){
+        DBRoutenController dbrc = new DBRoutenController();
+        dbrc.updateRoute(routeId, entfernung, fahrtdauer, id_startStadt, id_zielStadt);
         return "redirect:/routen";
     }
 
