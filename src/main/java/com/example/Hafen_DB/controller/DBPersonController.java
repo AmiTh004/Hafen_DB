@@ -8,9 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 
-public class PersonController {
+public class DBPersonController extends DBController{
     
-    DBController dbc;
 
     public ArrayList<Person> getAllPerson(){
 
@@ -21,7 +20,7 @@ public class PersonController {
         String sqlSelectAllPerson = "SELECT * FROM `personen`";
 
         try{
-            Connection conn = DriverManager.getConnection(dbc.getConnectionUrl(), dbc.getUsername(), dbc.getPasswort()); 
+            Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort()); 
             PreparedStatement ps = conn.prepareStatement(sqlSelectAllPerson); 
             ResultSet rs = ps.executeQuery();
             // Solange es Datensätze in der von der DB angefragen Ressource gibt, werden diese durchgearbeitet und dann als eine ArrayList zurückgegeben
@@ -37,5 +36,27 @@ public class PersonController {
         }
 
        return person;
+    }
+
+    public Person getPerson(int id){
+        Person person = null;
+        try{
+            String sqlSelectAllPerson = "SELECT * FROM `personen` WHERE personen.id="+String.valueOf(id);
+            Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort()); 
+            PreparedStatement ps = conn.prepareStatement(sqlSelectAllPerson); 
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                int personId = (int) rs.getLong("id");
+                String vorname = rs.getString("vorname");
+                String nachname = rs.getString("nachname");
+                person = new Person(personId, vorname, nachname);
+            }
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        }
+
+        return person;
     }
 }

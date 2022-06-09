@@ -25,7 +25,6 @@ public class RouteController extends DBController {
     private void loadRoutenFromDB(){
         DBRoutenController dbrc = new DBRoutenController();
         setRouten(dbrc.getAllRouten());
-        System.out.println("Sammelt Routen ein");
     }
 
     @GetMapping("/routen")
@@ -40,7 +39,6 @@ public class RouteController extends DBController {
         model.addAttribute("staedte", dbsc.getAllStadt());
 
         //Check ob das Mapping läuft: tut es!
-        System.out.println("Mapping?");
         return "index.html";
     }
 

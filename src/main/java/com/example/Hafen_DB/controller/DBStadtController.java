@@ -26,8 +26,8 @@ public class DBStadtController extends DBController{
             // Solange es Datensätze in der von der DB angefragen Ressource gibt, werden diese durchgearbeitet und dann als eine ArrayList zurückgegeben
             while (rs.next()) {
                 int id = (int) rs.getLong("id");
-                String name = rs.getString("name");
-                stadt.add(new Stadt(id, name));
+                String stadt_name = rs.getString("stadt_name");
+                stadt.add(new Stadt(id, stadt_name));
             }
         }
         catch(SQLException e){

@@ -29,7 +29,6 @@ public class DBFrischwareController extends DBController {
                 int id = (int) rs.getLong("id");
                 String frischware_name = rs.getString("frischware_name");
                 frischware.add(new Frischware(id, frischware_name));
-                System.out.println("Läuft");
             }
         }
         catch(SQLException e){

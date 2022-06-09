@@ -42,7 +42,7 @@ public class SchiffController extends DBController {
         }
     
         @RequestMapping("/delschiffe")
-        public String delschiffe(@RequestParam(name="id", required = true, defaultValue = "null") int id, @RequestParam(name="activePage", required = false, defaultValue = "schiff") String activePage, Model model){
+        public String delschiffe(@RequestParam(name="id", required = true, defaultValue = "null") int id, @RequestParam(name="activePage", required = false, defaultValue = "schiffe") String activePage, Model model){
             DBSchiffeController dbsc = new DBSchiffeController();
             dbsc.delSchiff(id);
             return "redirect:/schiffe";
