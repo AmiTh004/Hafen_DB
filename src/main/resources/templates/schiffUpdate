@@ -1,0 +1,12 @@
+<h2>Schiff bearbeiten</h2>
+<hr>
+<form th:action="@{/updateschiff(id=${schiffId})}">
+    <div type="input-group mb-3">
+        <input type="text" class="form-control" th:value="${schiff.getSchiff_name()}" th:name="schiff_name">
+        <input type="text" class="form-control" th:value="${schiff.getKapitaen()}" th:name="kapitaen">
+        <input type="number" class="form-control" th:value="${schiffId}" th:name="schiffId" style="display: none;">
+        <div class="input-group-append">
+            <button class="btn btn-secondary" type="submit" id="button-addon2">Aktualisieren</button>
+        </div>
+    </div>
+</form>
