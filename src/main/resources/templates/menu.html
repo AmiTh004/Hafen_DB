@@ -30,15 +30,16 @@
             </li>
             <!--Routen-->
             <li th:if="${activePage == 'routen'}" class="nav-item active">
-                <a class="nav-link" th:href="@{/?activePage=routen}">Routen</a>
+                <a class="nav-link" th:href="@{/routen}">Routen</a>
             </li>
             <li th:unless="${activePage == 'routen'}" class="nav-item">
-                <a class="nav-link" th:href="@{/?activePage=routen}">Routen</a>
+                <a class="nav-link" th:href="@{/routen}">Routen</a>
             </li>
             
             <!--Frischwaren
             
             WARUM NICHT ?activePage=  ???
+            Weil wir auf die Seite /frischwaren zugreifen wollen, über active page gelangen wir nicht dort hin.
             
             -->
             <li th:if="${activePage == 'frischwaren'}" class="nav-item active">

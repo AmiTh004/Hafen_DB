@@ -8,9 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 
-public class DBStadtController {
+public class DBStadtController extends DBController{
     
-    DBController dbc;
 
     public ArrayList<Stadt> getAllStadt(){
 
@@ -21,7 +20,7 @@ public class DBStadtController {
         String sqlSelectAllStaedte = "SELECT * FROM `staedte`";
 
         try{
-            Connection conn = DriverManager.getConnection(dbc.getConnectionUrl(), dbc.getUsername(), dbc.getPasswort()); 
+            Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort()); 
             PreparedStatement ps = conn.prepareStatement(sqlSelectAllStaedte); 
             ResultSet rs = ps.executeQuery();
             // Solange es Datensätze in der von der DB angefragen Ressource gibt, werden diese durchgearbeitet und dann als eine ArrayList zurückgegeben

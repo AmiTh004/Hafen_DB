@@ -39,11 +39,11 @@ Tabelle Route + eingabe nur Rederei
     <div class="input-group mb-3">
         <select class="custom-select" id="inputGroupSelect01" th:name="start">
             <!-- Dynamisierte DropDown-Liste mit Option-Select -->
-            <option th:each="stadt: ${staedte}" th:value="${stadt.getId()}" th:text="${stadt.getName()}"></option>
+            <option th:each="stadt: ${staedte}" th:value="${stadt}" th:text="${stadt.getName()}"></option>
         </select>
         <select class="custom-select" id="inputGroupSelect01" th:name="ziel">
             <!-- Dynamisierte DropDown-Liste mit Option-Select -->
-            <option th:each="stadt: ${staedte}" th:value="${stadt.getId()}" th:text="${stadt.getName()}"></option>
+            <option th:each="stadt: ${staedte}" th:value="${stadt}" th:text="${stadt.getName()}"></option>
         </select>
         <input type="text" class="form-controll" placeholder="Fahrtzeit" th:name="fahrtzeit">
         <input type="text" class="form-controll" placeholder="Entfernung" th:name="entfernung">
