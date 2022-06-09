@@ -97,7 +97,7 @@ public class DBWertgegenstandController extends DBController{
     public Wertgegenstand updateWertgegenstand(int id, String wertgegenstaende_name){
         Wertgegenstand wertgegenstand = null;
         try{
-            String sqlSelectAllWertgegenstaende = "UPDATE wertgegenstaende SET wertgegenstaende_name='"+wertgegenstaende_name+"' WHERE id="+String.valueOf(id);
+            String sqlSelectAllWertgegenstaende = "UPDATE 'wertgegenstaende' SET wertgegenstaende_name='"+wertgegenstaende_name+"' WHERE id="+String.valueOf(id);
             Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort()); 
             PreparedStatement ps = conn.prepareStatement(sqlSelectAllWertgegenstaende); 
             ps.executeUpdate();
