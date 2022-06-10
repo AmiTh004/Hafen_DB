@@ -28,7 +28,7 @@ public class DBRoutenController extends DBController {
         = route.start ist die Spalte in der Tabelle, die mit s1.id gleichgesetzt wird. 
         danach geht es mit JOIN wieder weiter für den zweiten Key und so geht es dann weiter, wobei die Variablennamen natürlich abweichen müssen
         */
-        String sqlSelectAllRoute = "SELECT * FROM `route` JOIN `staedte` s1 ON s1.id = route.start JOIN `staedte` s2 ON s2.id = route.ziel";
+        String sqlSelectAllRoute = "SELECT * FROM `route` JOIN `staedte` s1 ON s1.id = route.start JOIN `staedte` s2 ON s2.id = route.ziel ";
     
         try{
             Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort()); 
@@ -41,9 +41,10 @@ public class DBRoutenController extends DBController {
                 System.out.println(rs);
                 int id = (int) rs.getLong("id");
                 int startId = (int) rs.getLong("start");
-                String start = rs.getString("nameStart");
+                //Weil ColumnLabel "name" doppelt ist, über den Index, erste Spalte index=1
+                String start = rs.getString(7);
                 int zielId = (int) rs.getLong("ziel");
-                String ziel = rs.getString("nameZiel");
+                String ziel = rs.getString(9);
                 int entfernung = (int) rs.getLong("entfernung");
                 int fahrtdauer = (int) rs.getLong("fahrtdauer");
 
@@ -105,9 +106,9 @@ public class DBRoutenController extends DBController {
             while (rs.next()) {
                 int routeId = (int) rs.getLong("id");
                 int zielId = (int) rs.getLong("ziel");
-                String ziel = rs.getString("name");
+                String ziel = rs.getString(9);
                 int startId = (int) rs.getLong("start");
-                String start = rs.getString("name");
+                String start = rs.getString(7);
                 int entfernung = (int) rs.getLong("entfernung");
                 int fahrtdauer = (int) rs.getLong("fahrtdauer");
                 route = new Route(routeId, ziel, start, entfernung, fahrtdauer, startId, zielId);
