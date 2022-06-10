@@ -61,4 +61,51 @@ public class DBKapitaenController extends DBController{
 
         return kapitaen;
     }
+
+    public void addNewKapitaen(String vorname, String nachname){
+        try {
+            String sqlSelectAllPersons = "INSERT INTO kapitaen (vorname, nachname) VALUES('"+vorname+"', '"+nachname+"');";
+            Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort());
+            PreparedStatement ps = conn.prepareStatement(sqlSelectAllPersons);
+            //als Return von executeUpdate kommt 0 (fail) oder 1 (ok) zurück
+            int rs = ps.executeUpdate();
+            System.out.println(rs);
+        } 
+        catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public void delKapitaen(int id) {
+        try {
+            String sqlSelectAllPersons = "DELETE FROM `kapitaen` WHERE id="+String.valueOf(id);
+            Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort());
+            PreparedStatement ps = conn.prepareStatement(sqlSelectAllPersons);
+            //als Return von executeUpdate kommt 0 (fail) oder 1 (ok) zurück
+            int rs = ps.executeUpdate();
+            System.out.println(rs);
+            
+        } 
+        catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public Kapitaen updateKapitaen(int id, String vorname, String nachname) {
+        Kapitaen kapitaen = null;
+        try {
+            String sqlSelectAllPersons = "UPDATE `kapitaen` SET vorname='"+vorname+"', nachname='"+nachname+"' WHERE id="+String.valueOf(id);
+            Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort());
+            PreparedStatement ps = conn.prepareStatement(sqlSelectAllPersons);
+            //ps.executeUpdate();
+            //als Return von executeUpdate kommt 0 (fail) oder 1 (ok) zurück
+            int rs = ps.executeUpdate();
+            System.out.println(rs);
+        } 
+        catch (SQLException e) {
+            System.out.println(e);
+        }
+        
+        return kapitaen;
+    }
 }

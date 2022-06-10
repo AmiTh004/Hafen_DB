@@ -55,7 +55,6 @@ public class DBFrischwareController extends DBController {
 
     //Lösche eine Frischware
     public void delFrischware(int id) {
-        System.out.println(id);
         try {
             String sqlSelectAllPersons = "DELETE FROM `frischware` WHERE id="+String.valueOf(id);
             Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort());
@@ -110,9 +109,4 @@ public class DBFrischwareController extends DBController {
         
         return frischware;
     }
-
-
-    
-
-
 }

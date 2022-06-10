@@ -49,7 +49,9 @@ public class DBRoutenController extends DBController {
 
                 //route.add(new Route(id, ziel, start, entfernung, fahrtdauer, stadtid));
                 Route r1 = new Route(id, ziel, start, entfernung, fahrtdauer, startId, zielId);
+                System.out.println("Route wird ausgegeben");
                 System.out.println(r1);
+
             }
         }
 

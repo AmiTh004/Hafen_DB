@@ -66,16 +66,16 @@ public class WertgegenstandController {
     }
 
     @RequestMapping("/updateWertgegenstand")
-    public String updatewertgegenstand(@RequestParam(name="wertgegenstandId", required = true, defaultValue = "null") int wertgegenstandId, @RequestParam(name="wertgegenstaend_name", required = true, defaultValue = "null") String wertgegenstaendeName, @RequestParam(name="activePage", required = false, defaultValue = "wertgegenstand") String activePage, Model model){
+    public String updatewertgegenstand(@RequestParam(name="wertgegenstandId", required = true, defaultValue = "null") int wertgegenstandId, @RequestParam(name="wertgegenstandName", required = true, defaultValue = "null") String wertgegenstandName, @RequestParam(name="activePage", required = false, defaultValue = "wertgegenstand") String activePage, Model model){
         DBWertgegenstandController dbwc = new DBWertgegenstandController();
-        dbwc.updateWertgegenstand(wertgegenstandId, wertgegenstaendeName);
+        dbwc.updateWertgegenstand(wertgegenstandId, wertgegenstandName);
         return "redirect:/wertgegenstaende";
     }
 
     @RequestMapping("/addWertgegenstand")
-    public String addWertgegenstand(@RequestParam(name="wertgegenstaendeName", required = true, defaultValue = "null") String wertgegenstaendeName,@RequestParam(name="activePage", required = false, defaultValue = "wertgegenstaende") String activePage, Model model){
+    public String addWertgegenstand(@RequestParam(name="wertgegenstandName", required = true, defaultValue = "null") String wertgegenstandName,@RequestParam(name="activePage", required = false, defaultValue = "wertgegenstaende") String activePage, Model model){
         DBWertgegenstandController dbwc = new DBWertgegenstandController();
-        dbwc.addNeWertgegenstand(wertgegenstaendeName);
+        dbwc.addNeWertgegenstand(wertgegenstandName);
         return "redirect:/wertgegenstaende";
     }
 

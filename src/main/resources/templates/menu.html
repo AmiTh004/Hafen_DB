@@ -23,10 +23,10 @@
             </li>
             <!--Schiffe-->
             <li th:if="${activePage == 'schiffe'}" class="nav-item active">
-                <a class="nav-link" th:href="@{/?activePage=schiffe}">Schiffe</a>
+                <a class="nav-link" th:href="@{/schiffe}">Schiffe</a>
             </li>
             <li th:unless="${activePage == 'schiffe'}" class="nav-item">
-                <a class="nav-link" th:href="@{/?activePage=schiffe}">Schiffe</a>
+                <a class="nav-link" th:href="@{/schiffe}">Schiffe</a>
             </li>
             <!--Routen-->
             <li th:if="${activePage == 'routen'}" class="nav-item active">
