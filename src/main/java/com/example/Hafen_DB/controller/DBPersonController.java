@@ -38,7 +38,7 @@ public class DBPersonController extends DBController{
        return person;
     }
 
-    public Person getPerson(int id){
+   /* public Person getPerson(int id){
         Person person = null;
         try{
             String sqlSelectAllPerson = "SELECT * FROM `personen` WHERE personen.id="+String.valueOf(id);
@@ -59,4 +59,5 @@ public class DBPersonController extends DBController{
 
         return person;
     }
+    */
 }

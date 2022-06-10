@@ -24,7 +24,7 @@ public class DBKapitaenController extends DBController{
             // Solange es Datensätze in der von der DB angefragen Ressource gibt, werden diese durchgearbeitet und dann als eine ArrayList zurückgegeben
             while (rs.next()) {
                 int id = (int) rs.getLong("id");
-                int personid = (int) rs.getLong("person");
+                int personid = (int) rs.getLong("personid");
                 String vorname = rs.getString( "vorname");
                 String nachname = rs.getString( "nachname");
 
@@ -39,7 +39,7 @@ public class DBKapitaenController extends DBController{
         return kapitaen;
     }
 
-    public Kapitaen getKapitaen(int id){
+    /*public Kapitaen getKapitaen(int id){
         Kapitaen kapitaen = null;
         try{
             String sqlSelectAllKapitaen = "SELECT * FROM `kapitaen` WHERE kapitaen.id="+String.valueOf(id);
@@ -108,4 +108,5 @@ public class DBKapitaenController extends DBController{
         
         return kapitaen;
     }
+    */
 }

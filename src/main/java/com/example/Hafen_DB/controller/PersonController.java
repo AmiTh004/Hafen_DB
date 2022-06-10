@@ -1,3 +1,4 @@
+/*
 package com.example.Hafen_DB.controller;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class PersonController extends DBController{
         return "index.html";
     }
 
-    /**
+    
     @RequestMapping("/delfrischware")
     public String delfrischware(@RequestParam(name="id", required = true, defaultValue = "null")int id, @RequestParam(name="activePage", required = false, defaultValue = "frischwaren") String activePage, Model model) {
         DBFrischwareController dbfc = new DBFrischwareController();
@@ -69,7 +70,7 @@ public class PersonController extends DBController{
         return "redirect:/frischwaren";
     }
 
-    */
+    
 
 
 
@@ -80,3 +81,5 @@ public class PersonController extends DBController{
         return personen;
     }
 }
+
+*/

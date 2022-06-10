@@ -1,3 +1,4 @@
+/*
 package com.example.Hafen_DB.controller;
 
 import java.util.ArrayList;
@@ -32,25 +33,33 @@ public class KapitaenController extends DBController{
         
         model.addAttribute("activePage", "kapitaene");
         model.addAttribute("kapitaene", getKapitaene());
+        ;
+
+        DBPersonController dbpc = new DBPersonController();
+        model.addAttribute("personen", dbpc.getAllPerson());
+    
         return "index.html";
     }
-/**
+
+    @RequestMapping("/changekapitaen")
+    public String changekapitaen(@RequestParam(name="id", required = true, defaultValue = "null") int id, @RequestParam(name="activePage", required = false, defaultValue = "changekapitaen") String activePage, Model model){
+        // Frischware zur Bearbeitung laden
+        DBKapitaenController dbkc = new DBKapitaenController();
+        model.addAttribute("kapitaen", dbkc.getKapitaen(id));
+        model.addAttribute("kapitaenId", id);
+
+        DBPersonController dbpc = new DBPersonController();
+        model.addAttribute("personen", dbpc.getAllPerson());
+
+        model.addAttribute("activePage", "kapitaenUpdate");
+        return "index.html";
+    }
+
     @RequestMapping("/delkapitaen")
     public String delkapitaen(@RequestParam(name="id", required = true, defaultValue = "null")int id, @RequestParam(name="activePage", required = false, defaultValue = "kapitaene") String activePage, Model model) {
         DBKapitaenController dbkc = new DBKapitaenController();
         dakc.delKapitaen(id);
         return "redirect:/kapitaene";        
-    }
-
-    @RequestMapping("/changefrischware")
-    public String changefrischware(@RequestParam(name="id", required = true, defaultValue = "null") int id, @RequestParam(name="activePage", required = false, defaultValue = "changefrischware") String activePage, Model model){
-        // Frischware zur Bearbeitung laden
-        DBFrischwareController dbfc = new DBFrischwareController();
-        model.addAttribute("frischware", dbfc.getFrischware(id));
-        model.addAttribute("frischwareId", id);
-
-        model.addAttribute("activePage", "frischwareUpdate");
-        return "index.html";
     }
 
     @RequestMapping("/updatefrischware")
@@ -67,7 +76,7 @@ public class KapitaenController extends DBController{
         return "redirect:/kapitaene";
     }
 
-    */
+    
 
 
 
@@ -78,3 +87,4 @@ public class KapitaenController extends DBController{
         return kapitaene;
     }
 }
+*/

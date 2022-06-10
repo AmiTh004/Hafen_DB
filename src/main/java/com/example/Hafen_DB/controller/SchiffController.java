@@ -35,8 +35,8 @@ public class SchiffController extends DBController {
             model.addAttribute("schiffe", getSchiffe());
             
         //Hier werden dann Kapitäne geladen, muss aber erstmal eingebaut werden
-        //DBStadtController dbsc = new DBStadtController();
-        //model.addAttribute("staedte", dbsc.getAllStadt());
+            DBKapitaenController dbkc = new DBKapitaenController();
+            model.addAttribute("kapitaene", dbkc.getAllKapitaene());
     
             return "index.html";
         }
@@ -57,8 +57,8 @@ public class SchiffController extends DBController {
             model.addAttribute("schiffId", id);
     
         //Hier läuft das Gleiche mit den Kapitänen evenetuell
-        //DBStadtController dbsc = new DBStadtController();
-        //model.addAttribute("staedte", dbsc.getAllStadt());
+            DBKapitaenController dbkc = new DBKapitaenController();
+            model.addAttribute("kapitaene", dbkc.getAllKapitaene());
     
             model.addAttribute("activePage", "schiffUpdate");
             return "index.html";
