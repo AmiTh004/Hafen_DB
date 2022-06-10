@@ -41,9 +41,9 @@ public class DBRoutenController extends DBController {
                 System.out.println(rs);
                 int id = (int) rs.getLong("id");
                 int startId = (int) rs.getLong("start");
-                String start = rs.getString("name");
+                String start = rs.getString("nameStart");
                 int zielId = (int) rs.getLong("ziel");
-                String ziel = rs.getString("name");
+                String ziel = rs.getString("nameZiel");
                 int entfernung = (int) rs.getLong("entfernung");
                 int fahrtdauer = (int) rs.getLong("fahrtdauer");
 
@@ -51,7 +51,7 @@ public class DBRoutenController extends DBController {
                 Route r1 = new Route(id, ziel, start, entfernung, fahrtdauer, startId, zielId);
                 System.out.println("Route wird ausgegeben");
                 System.out.println(r1);
-
+                route.add(r1);
             }
         }
 
