@@ -15,7 +15,7 @@ public class DBKapitaenController extends DBController{
     
         ArrayList<Kapitaen> kapitaen = new ArrayList<>();
     
-        String sqlSelectAllKapitaene = "SELECT * FROM `kapitaene` JOIN person ON person.id=kapitaene.person";
+        String sqlSelectAllKapitaene = "SELECT * FROM `kapitaene` JOIN personen ON personen.id=kapitaene.person";
     
         try{
             Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort()); 
@@ -24,11 +24,11 @@ public class DBKapitaenController extends DBController{
             // Solange es Datensätze in der von der DB angefragen Ressource gibt, werden diese durchgearbeitet und dann als eine ArrayList zurückgegeben
             while (rs.next()) {
                 int id = (int) rs.getLong("id");
-                int personid = (int) rs.getLong("personid");
+                int person = (int) rs.getLong("person");
                 String vorname = rs.getString( "vorname");
                 String nachname = rs.getString( "nachname");
 
-                kapitaen.add(new Kapitaen(id, vorname, nachname, personid));
+                kapitaen.add(new Kapitaen(id, vorname, nachname, person));
             }
         }
 

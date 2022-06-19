@@ -23,8 +23,6 @@ public class DBSchiffeController extends DBController{
             ResultSet rs = ps.executeQuery();
             // Solange es Datensätze in der von der DB angefragen Ressource gibt, werden diese durchgearbeitet und dann als eine ArrayList zurückgegeben
             while (rs.next()) {
-                //TEST
-                System.out.println(rs);
                 int id = (int) rs.getLong("id");
                 String schiff_name = rs.getString("schiff_name");
                 String kapitaen = rs.getString("kapitaen");
@@ -39,9 +37,10 @@ public class DBSchiffeController extends DBController{
         
         return schiff;
     }
+
     public void addNewSchiff(String schiff_name, String kapitaen) {
         try{
-            String sqlSelectAllSchiff = "INSERT INTO schiff(schiff_name, kapitaen) VALUES('"+schiff_name+"', '"+kapitaen+"');";
+            String sqlSelectAllSchiff = "INSERT INTO schiffe(schiff_name, kapitaen) VALUES('"+schiff_name+"', '"+kapitaen+"');";
             Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort());
             //Rückfrage!
             PreparedStatement ps = conn.prepareStatement(sqlSelectAllSchiff); 
@@ -57,7 +56,7 @@ public class DBSchiffeController extends DBController{
     public void delSchiff(int id){
         try{
 
-            String sqlSelectAllSchiff = "DELETE FROM `schiff` WHERE id="+String.valueOf(id);
+            String sqlSelectAllSchiff = "DELETE FROM schiffe WHERE id="+String.valueOf(id);
             Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort());
             PreparedStatement ps = conn.prepareStatement(sqlSelectAllSchiff); 
             // als Return von executeUpdate kommt 0 (FAIL) oder 1 (OK!) zurück
@@ -73,7 +72,7 @@ public class DBSchiffeController extends DBController{
     public Schiff getSchiff(int id){
         Schiff schiff = null;
         try{
-            String sqlSelectAllSchiff = "SELECT * FROM `schiff` WHERE schiff.id="+String.valueOf(id);
+            String sqlSelectAllSchiff = "SELECT * FROM `schiffe` JOIN `kapitaene` k1 ON k1.id = schiffe.kapitaen WHERE schiff.id="+String.valueOf(id);
             Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort()); 
             PreparedStatement ps = conn.prepareStatement(sqlSelectAllSchiff); 
             ResultSet rs = ps.executeQuery();

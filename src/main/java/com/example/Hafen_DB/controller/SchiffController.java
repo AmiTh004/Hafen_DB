@@ -22,7 +22,7 @@ public class SchiffController extends DBController {
         }
     
         //Lädt aktuelle Frischwaren aus der Datenbank und wirft bei bedarf eine SQL-Exeption aus
-        private void loadSchiffFromDB(){
+        public void loadSchiffFromDB(){
             DBSchiffeController dbsc = new DBSchiffeController();
             setSchiffe(dbsc.getAllSchiffe());
         }
@@ -41,14 +41,16 @@ public class SchiffController extends DBController {
             return "index.html";
         }
     
+
         @RequestMapping("/delschiffe")
         public String delschiffe(@RequestParam(name="id", required = true, defaultValue = "null") int id, @RequestParam(name="activePage", required = false, defaultValue = "schiffe") String activePage, Model model){
             DBSchiffeController dbsc = new DBSchiffeController();
             dbsc.delSchiff(id);
             return "redirect:/schiffe";
+            // return "index.html";
         }
-    
-       
+
+
         @RequestMapping("/changeschiff")
         public String changeschiff(@RequestParam(name="id", required = true, defaultValue = "null") int id, @RequestParam(name="activePage", required = false, defaultValue = "changeschiff") String activePage, Model model){
             // Route zur Bearbeitung laden
@@ -71,6 +73,13 @@ public class SchiffController extends DBController {
             return "redirect:/schiffe";
         }
     
+        @RequestMapping("/addSchiff")
+        public String addSchiff(@RequestParam(name="schiffName", required = true, defaultValue = "null") String schiffName, @RequestParam(name="schiffKapitaen", required = true, defaultValue = "null") String schiffKapitaen, @RequestParam(name="activePage", required = false, defaultValue = "wertgegenstaende") String activePage, Model model){
+        DBSchiffeController dbsc = new DBSchiffeController();
+        dbsc.addNewSchiff(schiffName, schiffKapitaen);;
+        return "redirect:/schiffe";
+    }
+
     public ArrayList<Schiff> getSchiffe() {
         return schiffe;
     }
