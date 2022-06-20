@@ -33,8 +33,6 @@ public class FrischwareController extends DBController{
         
         model.addAttribute("activePage", "frischwaren");
         model.addAttribute("frischwaren", getFrischwaren());
-
-        System.out.println(getFrischwaren());
         return "index.html";
     }
 

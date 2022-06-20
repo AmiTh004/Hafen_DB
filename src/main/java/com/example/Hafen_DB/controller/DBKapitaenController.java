@@ -39,7 +39,7 @@ public class DBKapitaenController extends DBController{
         return kapitaen;
     }
 
-    /*public Kapitaen getKapitaen(int id){
+    public Kapitaen getKapitaen(int id){
         Kapitaen kapitaen = null;
         try{
             String sqlSelectAllKapitaen = "SELECT * FROM `kapitaen` WHERE kapitaen.id="+String.valueOf(id);
@@ -108,5 +108,5 @@ public class DBKapitaenController extends DBController{
         
         return kapitaen;
     }
-    */
+    
 }

@@ -1,4 +1,3 @@
-/*
 package com.example.Hafen_DB.controller;
 
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ public class KapitaenController extends DBController{
         setKapitaene(dbkc.getAllKapitaene());
     }
 
-    @GetMapping("/kapitaene")
+    /*@GetMapping("/kapitaene")
     public String kapitaene(@RequestParam(name="activePage", required = false, defaultValue = "kapitaene") String activePage, Model model) {
         loadKapitaenFromDB();
         
@@ -76,7 +75,7 @@ public class KapitaenController extends DBController{
         return "redirect:/kapitaene";
     }
 
-    
+    */
 
 
 
@@ -87,4 +86,4 @@ public class KapitaenController extends DBController{
         return kapitaene;
     }
 }
-*/
+

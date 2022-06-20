@@ -10,15 +10,13 @@ import java.sql.ResultSet;
 
 public class DBFrischwareController extends DBController {
 
-    
-
     public ArrayList<Frischware> getAllFrischware(){
 
         // Lokale Frischwaren-Arraylist erstellen
         ArrayList<Frischware> frischware = new ArrayList<>();
 
         // Das ist DB-Query
-        String sqlSelectAllFrischware = "SELECT * FROM frischware";
+        String sqlSelectAllFrischware = "SELECT * FROM `frischware`";
 
         try{
             Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort()); 

@@ -10,9 +10,6 @@ import java.sql.ResultSet;
 
 public class DBWertgegenstandController extends DBController{
     
-    public DBWertgegenstandController(){      
-    }
-
     public ArrayList<Wertgegenstand> getAllWertgegenstaende(){
     
         ArrayList<Wertgegenstand> wertgegenstand = new ArrayList<>();
@@ -57,7 +54,6 @@ public class DBWertgegenstandController extends DBController{
     // Lösche einen Wertgegenstand
     public void delWertgegenstand(int id){
         try{
-
             String sqlSelectAllWertgegenstaende = "DELETE FROM `wertgegenstaende` WHERE id="+String.valueOf(id);
             Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort());
             PreparedStatement ps = conn.prepareStatement(sqlSelectAllWertgegenstaende); 

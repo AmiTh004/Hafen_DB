@@ -73,8 +73,9 @@ public class SchiffController extends DBController {
             return "redirect:/schiffe";
         }
     
+        
         @RequestMapping("/addSchiff")
-        public String addSchiff(@RequestParam(name="schiffName", required = true, defaultValue = "null") String schiffName, @RequestParam(name="schiffKapitaen", required = true, defaultValue = "null") String schiffKapitaen, @RequestParam(name="activePage", required = false, defaultValue = "wertgegenstaende") String activePage, Model model){
+        public String addSchiff(@RequestParam(name="schiffName", required = true, defaultValue = "null") String schiffName, @RequestParam(name="schiffKapitaen", required = true, defaultValue = "null") String schiffKapitaen, @RequestParam(name="activePage", required = false, defaultValue = "schiffe") String activePage, Model model){
         DBSchiffeController dbsc = new DBSchiffeController();
         dbsc.addNewSchiff(schiffName, schiffKapitaen);;
         return "redirect:/schiffe";
