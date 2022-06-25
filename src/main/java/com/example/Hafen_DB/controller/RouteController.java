@@ -78,7 +78,7 @@ public class RouteController extends DBController {
     }
 
     @RequestMapping("/addroute")
-    public String addroute(@RequestParam(name="start", required = true, defaultValue = "null")int startId, @RequestParam(name="ziel", required = true, defaultValue = "null")int zielId,@RequestParam(name="entfernung", required = true, defaultValue = "null")int entfernung, @RequestParam(name="fahrtdauer", required = true, defaultValue = "null")int fahrtdauer, @RequestParam(name="activePage", required = false, defaultValue = "frischwaren") String activePage, Model model){
+    public String addroute(@RequestParam(name="start", required = true, defaultValue = "null") int startId, @RequestParam(name="ziel", required = true, defaultValue = "null")int zielId, @RequestParam(name="entfernung", required = true, defaultValue = "null")int entfernung, @RequestParam(name="fahrtdauer", required = true, defaultValue = "null")int fahrtdauer, @RequestParam(name="activePage", required = false, defaultValue = "frischwaren") String activePage, Model model){
         DBRoutenController dbrc = new DBRoutenController();
         dbrc.addNewRoute(zielId, startId, entfernung, fahrtdauer);
         return "redirect:/frischwaren";
