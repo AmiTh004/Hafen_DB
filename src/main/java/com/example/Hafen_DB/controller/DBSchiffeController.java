@@ -95,7 +95,7 @@ public class DBSchiffeController extends DBController{
     public Schiff updateSchiff(int id, String schiff_name, String kapitaen){
         Schiff schiff = null;
         try{
-            String sqlSelectAllSchiff = "UPDATE schiff SET schiff_name='"+schiff_name+"', kapitaen='"+kapitaen+"' WHERE id="+String.valueOf(id);
+            String sqlSelectAllSchiff = "UPDATE schiffe SET schiff_name='"+schiff_name+"', kapitaen='"+kapitaen+"' WHERE id="+String.valueOf(id);
             Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort()); 
             PreparedStatement ps = conn.prepareStatement(sqlSelectAllSchiff); 
             ps.executeUpdate();

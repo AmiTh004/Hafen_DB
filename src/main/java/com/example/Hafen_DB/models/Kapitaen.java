@@ -3,15 +3,13 @@ package com.example.Hafen_DB.models;
 public class Kapitaen {
     
     int id;
-    int person;
     String vorname;
     String nachname;
 
-    public Kapitaen(int id, String vorname, String nachname, int person){
+    public Kapitaen(int id, String vorname, String nachname){
         setId(id);
         setNachname(nachname);
         setVorname(vorname);
-        setPersonid(person);
     }
 
     /**
@@ -37,11 +35,5 @@ public class Kapitaen {
     }
     public String getVorname() {
         return vorname;
-    }
-    public void setPersonid(int person) {
-        this.person = person;
-    }
-    public int getPersonid() {
-        return person;
     }
 }
