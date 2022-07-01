@@ -38,9 +38,12 @@ public class DBSchiffeController extends DBController{
         return schiff;
     }
 
-    public void addNewSchiff(String schiff_name, String kapitaen) {
+    public void addNewSchiff(String schiff_name, String id) {
         try{
-            String sqlSelectAllSchiff = "INSERT INTO schiffe(schiff_name, kapitaen) VALUES('"+schiff_name+"', '"+kapitaen+"');";
+
+            String sqlSelectAllSchiff = "insert into schiffe(schiff_name, kapitaen) values('"+schiff_name+"', SELECT id from kapitaene WHERE id="+String.valueOf(id);
+            //Ausgabe bei phpMyAdmin
+            //INSERT INTO `schiffe` (`id`, `schiff_name`, `kapitaen`) VALUES (NULL, 'Santa Maria', '6');
             Connection conn = DriverManager.getConnection(getConnectionUrl(), getUsername(), getPasswort());
             //Rückfrage!
             PreparedStatement ps = conn.prepareStatement(sqlSelectAllSchiff); 
